@@ -1,0 +1,542 @@
+/* Upload Page Styles */
+
+.upload-page {
+  padding: var(--spacing-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.upload-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.upload-header h1 {
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.upload-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* Upload Zone */
+.upload-zone-container {
+  margin-bottom: var(--spacing-xl);
+}
+
+.upload-dropzone {
+  border: 2px dashed var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+  text-align: center;
+  background: var(--bg-secondary);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-dropzone:hover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+.upload-dropzone.active {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  transform: scale(1.02);
+}
+
+.upload-dropzone.uploading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.upload-content svg,
+.upload-status svg {
+  color: var(--primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.upload-content h3,
+.upload-status h3 {
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.upload-content p,
+.upload-status p {
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.upload-content .btn {
+  margin-top: var(--spacing-md);
+}
+
+.upload-status {
+  text-align: center;
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Upload Unauthorized */
+.upload-unauthorized {
+  text-align: center;
+  padding: var(--spacing-xl);
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border-color);
+  margin: var(--spacing-xl) 0;
+}
+
+.upload-unauthorized svg {
+  color: var(--warning);
+  margin-bottom: var(--spacing-md);
+}
+
+.upload-unauthorized h2 {
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.upload-unauthorized p {
+  color: var(--text-secondary);
+}
+
+/* Review Section */
+.review-section {
+  margin-top: var(--spacing-xl);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+.review-header {
+  padding: var(--spacing-lg);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.review-header h2 {
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.review-header p {
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.review-content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  min-height: 600px;
+}
+
+/* Documents Sidebar */
+.documents-sidebar {
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border-color);
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+  max-height: 800px;
+}
+
+.documents-sidebar h3 {
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+  font-size: 1.1rem;
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.documents-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.document-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.document-item:hover {
+  background: var(--bg-primary);
+  border-color: var(--border-color);
+  transform: translateX(4px);
+}
+
+.document-item.active {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.document-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.document-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.document-name {
+  font-weight: 500;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+
+.document-size {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.document-status {
+  flex-shrink: 0;
+}
+
+.pending-icon {
+  color: var(--warning);
+}
+
+.complete-icon {
+  color: var(--success);
+}
+
+/* Review Panel */
+.review-panel {
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+  max-height: 800px;
+}
+
+.review-panel-header {
+  display: flex;
+  justify-content: between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  gap: var(--spacing-md);
+}
+
+.review-panel-header h3 {
+  color: var(--text-primary);
+  flex: 1;
+  margin: 0;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.review-section-block {
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+}
+
+.review-section-block h4 {
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: 1rem;
+}
+
+.suggestion-count {
+  background: var(--primary);
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: var(--border-radius-sm);
+  font-weight: normal;
+  margin-left: var(--spacing-xs);
+}
+
+/* Applied Tags */
+.applied-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+/* Suggestions List */
+.suggestions-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.suggestion-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background: var(--bg-primary);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+}
+
+.suggestion-item .tag-badge {
+  flex: 1;
+}
+
+.suggestion-actions {
+  display: flex;
+  gap: var(--spacing-xs);
+  flex-shrink: 0;
+}
+
+.suggestion-reason {
+  width: 100%;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-top: var(--spacing-xs);
+  padding: var(--spacing-xs);
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius-sm);
+  border-left: 3px solid var(--info);
+}
+
+/* Project and Document Type Suggestions */
+.project-suggestion,
+.doc-type-suggestion {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.confidence-badge {
+  background: var(--info);
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: var(--border-radius-sm);
+  font-weight: normal;
+}
+
+/* Manual Tag Form */
+.manual-tag-form {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: stretch;
+}
+
+.manual-tag-form .input {
+  flex: 1;
+}
+
+.manual-tag-form .btn {
+  flex-shrink: 0;
+}
+
+/* Button Variants */
+.btn-sm {
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  min-width: auto;
+}
+
+.btn-success {
+  background-color: var(--success);
+  border-color: var(--success);
+}
+
+.btn-success:hover {
+  background-color: var(--success-dark);
+  border-color: var(--success-dark);
+}
+
+.btn-danger {
+  background-color: var(--danger);
+  border-color: var(--danger);
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: var(--danger-dark);
+  border-color: var(--danger-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .upload-page {
+    padding: var(--spacing-md);
+  }
+  
+  .upload-dropzone {
+    padding: var(--spacing-lg);
+    min-height: 150px;
+  }
+  
+  .review-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .documents-sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    max-height: 200px;
+    padding: var(--spacing-md);
+  }
+  
+  .documents-list {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: var(--spacing-xs);
+  }
+  
+  .document-item {
+    flex-shrink: 0;
+    min-width: 120px;
+  }
+  
+  .review-panel {
+    padding: var(--spacing-md);
+  }
+  
+  .review-panel-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-sm);
+  }
+  
+  .review-panel-header h3 {
+    white-space: normal;
+    text-align: center;
+  }
+  
+  .suggestion-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .suggestion-actions {
+    justify-content: center;
+  }
+  
+  .manual-tag-form {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .upload-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .upload-header p {
+    font-size: 1rem;
+  }
+  
+  .upload-dropzone {
+    padding: var(--spacing-md);
+  }
+  
+  .upload-content h3,
+  .upload-status h3 {
+    font-size: 1.2rem;
+  }
+  
+  .review-section-block {
+    padding: var(--spacing-sm);
+  }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  .upload-dropzone,
+  .document-item,
+  .suggestion-item {
+    transition: none;
+  }
+  
+  .spinning {
+    animation: none;
+  }
+}
+
+/* Focus States */
+.upload-dropzone:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.document-item:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .upload-dropzone {
+    border-width: 3px;
+  }
+  
+  .review-section-block {
+    border-width: 2px;
+  }
+  
+  .suggestion-item {
+    border-width: 2px;
+  }
+}
+
+/* Custom Scrollbar for Review Areas */
+.documents-sidebar::-webkit-scrollbar,
+.review-panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.documents-sidebar::-webkit-scrollbar-track,
+.review-panel::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius-sm);
+}
+
+.documents-sidebar::-webkit-scrollbar-thumb,
+.review-panel::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: var(--border-radius-sm);
+}
+
+.documents-sidebar::-webkit-scrollbar-thumb:hover,
+.review-panel::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
