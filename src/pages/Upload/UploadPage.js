@@ -111,7 +111,11 @@ function UploadPage() {
       return doc;
     }));
     
-    toast.success(`Assigned to project: ${project.name}`);
+    if (project) {
+      toast.success(`Assigned to project: ${project.name}`);
+    } else {
+      toast.success('Project suggestion rejected');
+    }
   };
 
   const handleApproveDocumentType = (documentId, documentType) => {
@@ -126,7 +130,11 @@ function UploadPage() {
       return doc;
     }));
     
-    toast.success(`Document type set to: ${documentType}`);
+    if (documentType) {
+      toast.success(`Document type set to: ${documentType}`);
+    } else {
+      toast.success('Document type suggestion rejected');
+    }
   };
 
   const handleManualTagAdd = (documentId, tagName) => {
@@ -148,6 +156,34 @@ function UploadPage() {
     }
     
     handleApproveTag(documentId, tag);
+  };
+
+  const handleManualProjectAdd = (documentId, projectName) => {
+    if (!projectName.trim()) return;
+    
+    // Check if project already exists
+    const existingProject = projects.find(p => p.name.toLowerCase() === projectName.toLowerCase());
+    let project;
+    
+    if (existingProject) {
+      project = existingProject;
+    } else {
+      // Create new project
+      project = addProject({
+        name: projectName.trim(),
+        description: `Custom project created during upload`,
+        color: '#3b82f6'
+      });
+    }
+    
+    handleApproveProject(documentId, project);
+  };
+
+  const handleManualDocumentTypeAdd = (documentId, documentTypeName) => {
+    if (!documentTypeName.trim()) return;
+    
+    // Directly set the document type (no need to check existing as it's just a string)
+    handleApproveDocumentType(documentId, documentTypeName.trim());
   };
 
   const handleFinishReview = (documentId) => {
@@ -300,6 +336,8 @@ function UploadPage() {
                 onApproveProject={handleApproveProject}
                 onApproveDocumentType={handleApproveDocumentType}
                 onManualTagAdd={handleManualTagAdd}
+                onManualProjectAdd={handleManualProjectAdd}
+                onManualDocumentTypeAdd={handleManualDocumentTypeAdd}
                 onFinishReview={handleFinishReview}
                 tags={tags}
                 projects={projects}
@@ -320,17 +358,37 @@ function ReviewPanel({
   onApproveProject, 
   onApproveDocumentType,
   onManualTagAdd,
+  onManualProjectAdd,
+  onManualDocumentTypeAdd,
   onFinishReview,
   tags,
   projects 
 }) {
   const [manualTagInput, setManualTagInput] = useState('');
+  const [manualProjectInput, setManualProjectInput] = useState('');
+  const [manualDocumentTypeInput, setManualDocumentTypeInput] = useState('');
 
   const handleManualTagSubmit = (e) => {
     e.preventDefault();
     if (manualTagInput.trim()) {
       onManualTagAdd(document.id, manualTagInput.trim());
       setManualTagInput('');
+    }
+  };
+
+  const handleManualProjectSubmit = (e) => {
+    e.preventDefault();
+    if (manualProjectInput.trim()) {
+      onManualProjectAdd(document.id, manualProjectInput.trim());
+      setManualProjectInput('');
+    }
+  };
+
+  const handleManualDocumentTypeSubmit = (e) => {
+    e.preventDefault();
+    if (manualDocumentTypeInput.trim()) {
+      onManualDocumentTypeAdd(document.id, manualDocumentTypeInput.trim());
+      setManualDocumentTypeInput('');
     }
   };
 
@@ -468,6 +526,7 @@ function ReviewPanel({
           <FiEdit3 />
           Add Custom Tag
         </h4>
+        <p className="section-description">Create a new tag or add an existing one to this document.</p>
         <form onSubmit={handleManualTagSubmit} className="manual-tag-form">
           <input
             type="text"
@@ -478,7 +537,51 @@ function ReviewPanel({
           />
           <button type="submit" className="btn btn-primary btn-sm">
             <FiCheck />
-            Add
+            Add Tag
+          </button>
+        </form>
+      </div>
+
+      {/* Manual Project Addition */}
+      <div className="review-section-block">
+        <h4>
+          <FiFolder />
+          Add Custom Project
+        </h4>
+        <p className="section-description">Assign this document to a new or existing project.</p>
+        <form onSubmit={handleManualProjectSubmit} className="manual-tag-form">
+          <input
+            type="text"
+            value={manualProjectInput}
+            onChange={(e) => setManualProjectInput(e.target.value)}
+            placeholder="Enter project name..."
+            className="input"
+          />
+          <button type="submit" className="btn btn-primary btn-sm">
+            <FiCheck />
+            Add Project
+          </button>
+        </form>
+      </div>
+
+      {/* Manual Document Type Addition */}
+      <div className="review-section-block">
+        <h4>
+          <FiFile />
+          Set Custom Document Type
+        </h4>
+        <p className="section-description">Specify a custom document type for better organization.</p>
+        <form onSubmit={handleManualDocumentTypeSubmit} className="manual-tag-form">
+          <input
+            type="text"
+            value={manualDocumentTypeInput}
+            onChange={(e) => setManualDocumentTypeInput(e.target.value)}
+            placeholder="e.g., Contract, Invoice, Report..."
+            className="input"
+          />
+          <button type="submit" className="btn btn-primary btn-sm">
+            <FiCheck />
+            Set Type
           </button>
         </form>
       </div>
