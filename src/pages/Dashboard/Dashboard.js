@@ -181,13 +181,6 @@ function Dashboard() {
           icon={FiClock}
           color="green"
         />
-        
-        <StatsCard
-          title="Upload Rate"
-          value={`${Math.round(stats.recentDocuments / 7 * 10) / 10}/day`}
-          icon={FiUpload}
-          color="purple"
-        />
       </div>
 
       {/* Controls Bar */}
