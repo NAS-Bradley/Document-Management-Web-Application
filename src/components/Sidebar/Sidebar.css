@@ -132,19 +132,6 @@
   position: relative;
 }
 
-.quick-access-link.highlight {
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
 /* Project Links */
 .project-link {
   font-size: 0.8rem;

@@ -188,7 +188,6 @@
 .document-item:hover {
   background: var(--bg-primary);
   border-color: var(--border-color);
-  transform: translateX(4px);
 }
 
 .document-item.active {

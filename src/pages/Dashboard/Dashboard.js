@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDocuments } from '../../context/DocumentContext';
 import { useAuth } from '../../context/AuthContext';
 import { 
@@ -18,6 +19,7 @@ import StatsCard from '../../components/StatsCard/StatsCard';
 import './Dashboard.css';
 
 function Dashboard() {
+  const navigate = useNavigate();
   const { 
     documents, 
     loading, 
@@ -108,6 +110,10 @@ function Dashboard() {
     }
   };
 
+  const handleUploadDocument = () => {
+    navigate('/upload');
+  };
+
   if (loading) {
     return (
       <div className="dashboard-loading">
@@ -128,7 +134,7 @@ function Dashboard() {
         
         <div className="dashboard-actions">
           {canUpload() && (
-            <button className="btn btn-primary">
+            <button className="btn btn-primary" onClick={handleUploadDocument}>
               <FiPlus />
               Upload Document
             </button>
@@ -278,7 +284,7 @@ function Dashboard() {
                 }
               </p>
               {canUpload() && (
-                <button className="btn btn-primary">
+                <button className="btn btn-primary" onClick={handleUploadDocument}>
                   <FiPlus />
                   Upload Document
                 </button>
